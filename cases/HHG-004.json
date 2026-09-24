@@ -1,0 +1,83 @@
+{
+  "case_id": "HHG-004",
+  "case": {
+    "status": "closed_fraud",
+    "verdict": "fraud",
+    "fraud_probability": 0.86,
+    "pattern": "card_not_present_fraud",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3583227"
+    ],
+    "first_suspicious_txn_id": "3583227",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 128.33,
+    "evidence": [
+      {
+        "claim": "Customer C08106 message: 'I never made this $128.33 purchase. Please check my card.' Refers to 3583227.",
+        "source": "graph",
+        "ref": "case_pack / BenchmarkCase",
+        "entity_ids": [
+          "HHG-004",
+          "3583227",
+          "C08106-K1",
+          "C08106"
+        ]
+      },
+      {
+        "claim": "Customer explicitly denied the flagged transaction in the case-pack trigger.",
+        "source": "customer",
+        "ref": "README.md / case_pack trigger",
+        "entity_ids": [
+          "3583227"
+        ]
+      }
+    ],
+    "similar_prior_cases": [],
+    "summary": "Customer C08106 reported that they did not make flagged transaction 3583227. The available trigger is a direct customer denial, so the case is treated as fraud pending no contrary verification evidence. Policy R2 supports blocking the card and creating the case.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 1,
+      "assumed_response": "Customer's case-pack message is treated as a denial of the flagged purchase."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: verify before irreversible action; customer dispute is the trigger."
+      }
+    ],
+    "final": [
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denies the transaction; exposure is below $2,500."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2: customer dispute requires an internal case."
+      }
+    ],
+    "what_changed": "nothing"
+  },
+  "sar": {
+    "file": false,
+    "reason": "R2: customer denial triggers BLOCK_CARD and CREATE_CASE; the flagged exposure is below the $1,000 reporting threshold and no shared-origin evidence is established in this submission.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Customer denial provides the current decision point; no further action is assumed without additional evidence.",
+  "tool_calls": 1,
+  "tokens": 0,
+  "latency_s": 0
+}

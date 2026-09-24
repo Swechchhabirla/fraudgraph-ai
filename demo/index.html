@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agentic Fraud Investigation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1220;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 24px 40px;
+            border-bottom: 1px solid #263248;
+            background: #111a2b;
+        }
+
+        .header h1 {
+            font-size: 28px;
+        }
+
+        .header p {
+            color: #9ca9bd;
+            margin-top: 7px;
+        }
+
+        .container {
+            padding: 30px 40px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .case-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111a2b;
+            border: 1px solid #263248;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 25px;
+        }
+
+        .case-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .status {
+            background: #7c5cff;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #111a2b;
+            border: 1px solid #263248;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .label {
+            color: #8e9bb0;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 22px;
+        }
+
+        .panel {
+            background: #111a2b;
+            border: 1px solid #263248;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .panel h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .evidence {
+            padding: 15px;
+            background: #182235;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #7c5cff;
+        }
+
+        .evidence strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .evidence span {
+            color: #aab5c7;
+            font-size: 14px;
+        }
+
+        .action {
+            text-align: center;
+            padding: 25px;
+            background: #182235;
+            border-radius: 10px;
+            border: 1px solid #34415a;
+        }
+
+        .action-title {
+            color: #aab5c7;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .action-value {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .reason {
+            color: #aab5c7;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            margin-top: 25px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid #263248;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #7c5cff;
+            border-radius: 50%;
+            margin-top: 6px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #68758a;
+            padding: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Agentic Fraud Investigation</h1>
+    <p>TigerGraph-powered fraud evidence and next-best-action system</p>
+</header>
+
+<main class="container">
+
+    <div class="case-bar">
+        <div>
+            <div class="label">ACTIVE INVESTIGATION</div>
+            <div class="case-title">Case HHG-001</div>
+        </div>
+
+        <div class="status">
+            REQUIRES REVIEW
+        </div>
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="label">CUSTOMER</div>
+            <div class="value">C12382</div>
+        </div>
+
+        <div class="card">
+            <div class="label">CARD</div>
+            <div class="value">C12382-K1</div>
+        </div>
+
+        <div class="card">
+            <div class="label">FLAGGED TRANSACTION</div>
+            <div class="value">3514030</div>
+        </div>
+
+        <div class="card">
+            <div class="label">TRANSACTION HISTORY</div>
+            <div class="value">422</div>
+        </div>
+
+    </div>
+
+
+    <div class="main-grid">
+
+        <section class="panel">
+
+            <h2>Investigation Evidence</h2>
+
+            <div class="evidence">
+                <strong>Card transaction history</strong>
+                <span>422 transactions associated with C12382-K1.</span>
+            </div>
+
+            <div class="evidence">
+                <strong>Online activity</strong>
+                <span>2 online transactions detected in the card history.</span>
+            </div>
+
+            <div class="evidence">
+                <strong>Flagged transaction</strong>
+                <span>Transaction 3514030 is the benchmark case's flagged transaction.</span>
+            </div>
+
+            <div class="evidence">
+                <strong>Connected-card evidence</strong>
+                <span>No connected-card relationship was found for this card.</span>
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>Next-Best Action</h2>
+
+            <div class="action">
+
+                <div class="action-title">
+                    AGENT RECOMMENDATION
+                </div>
+
+                <div class="action-value">
+                    VERIFY WITH CUSTOMER
+                    / STEP-UP
+                </div>
+
+                <div class="reason">
+                    Online activity was detected. The case
+                    should proceed through customer verification
+                    or step-up verification rather than assuming
+                    the flagged transaction is fraudulent.
+                </div>
+
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <div>
+                        <strong>Fraud signal received</strong>
+                        <p class="label">Benchmark case HHG-001</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <div>
+                        <strong>Graph evidence collected</strong>
+                        <p class="label">Customer → Card → Transactions</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <div>
+                        <strong>Pattern evidence detected</strong>
+                        <p class="label">Online activity present</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <div>
+                        <strong>Policy action generated</strong>
+                        <p class="label">Verify / Step-up</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+    Agentic Fraud Investigation • TigerGraph • HHGOA_IEEE
+</footer>
+
+</body>
+</html>

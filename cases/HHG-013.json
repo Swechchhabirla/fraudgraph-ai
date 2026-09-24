@@ -1,0 +1,88 @@
+{
+  "case_id": "HHG-013",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.55,
+    "pattern": "card_not_present_fraud",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3526826"
+    ],
+    "first_suspicious_txn_id": "",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 0,
+    "evidence": [
+      {
+        "claim": "Real-time model scored transaction 3526826 ($35.66, online) at 0.76. Review and decide.",
+        "source": "graph",
+        "ref": "case_pack / BenchmarkCase",
+        "entity_ids": [
+          "HHG-013",
+          "3526826",
+          "C07671-K2",
+          "C07671"
+        ]
+      },
+      {
+        "claim": "Risk score is treated as an input signal rather than a verdict.",
+        "source": "document",
+        "ref": "README.md / case_pack trigger",
+        "entity_ids": [
+          "3526826"
+        ]
+      }
+    ],
+    "similar_prior_cases": [],
+    "summary": "Risk score triggered review of transaction 3526826 on card C07671-K2. The benchmark states that a risk score is an input rather than a verdict, so the case remains uncertain pending customer verification and graph evidence.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 1,
+      "assumed_response": "No customer response is provided in the benchmark; case remains pending verification."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: a risk signal alone is not a verdict; assessed probability remains below 0.70."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "Case is opened because evidence is being requested."
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: a risk signal alone is not a verdict; assessed probability remains below 0.70."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "Case is opened because evidence is being requested."
+      }
+    ],
+    "what_changed": "nothing"
+  },
+  "sar": {
+    "file": false,
+    "reason": "R1: weak or model-only signal should be verified before blocking.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph/customer evidence is required before a stronger conclusion can be supported.",
+  "tool_calls": 1,
+  "tokens": 0,
+  "latency_s": 0
+}

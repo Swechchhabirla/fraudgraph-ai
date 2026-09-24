@@ -1,0 +1,88 @@
+{
+  "case_id": "HHG-014",
+  "case": {
+    "status": "escalated",
+    "verdict": "uncertain",
+    "fraud_probability": 0.65,
+    "pattern": "undocumented",
+    "pattern_description": "Shared unusual device activity across multiple cards; requires confirmation before assigning a standard fraud pattern.",
+    "affected_txn_ids": [
+      "3478561"
+    ],
+    "first_suspicious_txn_id": "",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 0,
+    "evidence": [
+      {
+        "claim": "Analyst request: several cards this month show purchases from the same unusual device profile. Review transaction 3478561 on card C13487-K1 and look for related activity.",
+        "source": "graph",
+        "ref": "case_pack / BenchmarkCase",
+        "entity_ids": [
+          "HHG-014",
+          "3478561",
+          "C13487-K1",
+          "C13487"
+        ]
+      },
+      {
+        "claim": "Risk score is treated as an input signal rather than a verdict.",
+        "source": "document",
+        "ref": "README.md / case_pack trigger",
+        "entity_ids": [
+          "3478561"
+        ]
+      }
+    ],
+    "similar_prior_cases": [],
+    "summary": "Analyst request 3478561 describes several cards sharing an unusual device profile. This is a shared-origin signal, but the case pack does not provide enough transaction-level evidence to establish a fraud verdict. The investigation remains escalated pending graph/device confirmation.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "analyst_info",
+      "asked_after_step": 1,
+      "assumed_response": "Analyst confirms that several cards in the same time window share the unusual device profile."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R6/R9: analyst reports a shared unusual device profile across several cards."
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: evidence is incomplete and the shared-origin signal needs confirmation."
+      }
+    ],
+    "final": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R6/R9: analyst reports a shared unusual device profile across several cards."
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: evidence is incomplete and the shared-origin signal needs confirmation."
+      }
+    ],
+    "what_changed": "nothing"
+  },
+  "sar": {
+    "file": false,
+    "reason": "R8/R9: evidence is incomplete and potentially coordinated; escalate and preserve the case rather than forcing a known pattern.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph/customer evidence is required before a stronger conclusion can be supported.",
+  "tool_calls": 1,
+  "tokens": 0,
+  "latency_s": 0
+}
